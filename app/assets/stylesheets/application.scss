@@ -1,1 +1,15 @@
 @import "bootstrap/scss/bootstrap";
+
+#logo {
+    float: left;
+    font-size: 1.7em;
+    color: #FFF;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: bold;
+}
+
+.jumbotron {
+    background: asset-url('food-background.jpg');
+    background-size: 100%;
+}
