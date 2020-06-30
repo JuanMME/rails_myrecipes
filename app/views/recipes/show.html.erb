@@ -13,6 +13,9 @@
                     <%= link_to gravatar_for(@recipe.chef), recipes_path %>
                 </div>
                 <small class="d-block text-center"><%= @recipe.chef.chefname.capitalize %></small>
+                <%= link_to "edit", edit_recipe_path(@recipe) %> |
+                <%= link_to "delete", recipe_path(@recipe), method: :delete, data: { confirm: "Are you sure you want to delete this recipe?" } %> |
+                <%= link_to "return to listing", recipes_path %>
                 <small class="float-right"><%= time_ago_in_words(@recipe.created_at) %> ago</small>
             </div>
         </div>
