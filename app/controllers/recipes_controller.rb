@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
     end
 
     def show
-        @recipe = Recipe.find(params[:id])
+        set_recipe
     end
 
     def new
@@ -20,6 +20,20 @@ class RecipesController < ApplicationController
             redirect_to recipe_path(@recipe)
         else
             render 'new'
+        end
+    end
+
+    def edit
+        set_recipe
+    end
+
+    def update
+        set_recipe
+        if @recipe.update(recipe_params)
+            flash[:success] = "Recipe was updated successfully"
+            redirect_to recipe_path(@recipe)
+        else
+            render 'edit'
         end
     end
 
