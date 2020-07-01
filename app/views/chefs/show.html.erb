@@ -7,7 +7,9 @@
         </div>
         <div class="col-12 mt-4">
             <h4 class="text-center mb-4"><%= @chef.chefname %>'s recipes</h4>
-            <%= render "recipes/recipe_list", obj: @chef.recipes %>
+            <%= render "shared/pagination", obj: @chef_recipes %>
+            <%= render "recipes/recipe_list", obj: @chef_recipes %>
+            <%= render "shared/pagination", obj: @chef_recipes %>
         </div>
     </div>
 </div>

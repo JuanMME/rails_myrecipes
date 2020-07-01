@@ -9,5 +9,7 @@ class Chef < ApplicationRecord
     # has_secure_password makes password required on creation always, allow_nil makes it optional on update
     validates :password, presence: true, length: { minimum: 5 }, allow_nil: true
 
-    has_many :recipes
+    has_many :recipes, dependent: :destroy
+
+    default_scope -> { order(created_at: :desc) }
 end

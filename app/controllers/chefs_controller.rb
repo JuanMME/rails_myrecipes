@@ -1,11 +1,12 @@
 class ChefsController < ApplicationController
-    before_action :set_chef, only: [:show, :edit, :update]
+    before_action :set_chef, only: [:show, :edit, :update, :destroy]
 
     def index
-        @chefs = Chef.all
+        @chefs = Chef.paginate(page: params[:page], per_page: 5)
     end
 
     def show
+        @chef_recipes = @chef.recipes.paginate(page: params[:page], per_page: 5)
     end
 
     def new
@@ -32,6 +33,16 @@ class ChefsController < ApplicationController
             redirect_to @chef
         else
             render 'edit'
+        end
+    end
+
+    def destroy
+        if @chef.destroy
+            flash[:success] = "Chef deleted successfully"
+            redirect_to chefs_path
+        else
+            flash[:danger] = "There was an error deleting the chef"
+            render 'index'
         end
     end
 

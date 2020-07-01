@@ -1,5 +1,7 @@
 <div class="container">
     <%= render "shared/page_title", title: "Listing all recipes" %>
 
+    <%= render "shared/pagination", obj: @recipes %>
     <%= render "recipes/recipe_list", obj: @recipes %>
+    <%= render "shared/pagination", obj: @recipes %>
 </div>
