@@ -10,7 +10,7 @@
                 <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
                 <p><%= truncate(recipe.description, length: 150) %></p>
                 <small class="d-block">Created <%= time_ago_in_words(recipe.created_at) %> ago</small>
-                <% if logged_in? && current_chef == recipe.chef %>
+                <% if logged_in? && (current_chef == recipe.chef || current_chef.admin?) %>
                     <small class="d-block text-right">
                         <%= link_to "edit", edit_recipe_path(recipe) %> |
                         <%= link_to "delete", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure you want to delete this recipe?" } %>
