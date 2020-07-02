@@ -14,8 +14,7 @@ class RecipesController < ApplicationController
 
     def create
         @recipe = Recipe.new(recipe_params)
-        # Temporarily
-        @recipe.chef = Chef.last
+        @recipe.chef = current_chef
         if @recipe.save
             flash[:success] = "Recipe was created successfully"
             redirect_to recipe_path(@recipe)
@@ -41,7 +40,7 @@ class RecipesController < ApplicationController
             flash[:success] = "Recipe deleted successfully"
             redirect_to recipes_path
         else
-            flash[:danger] = "There was an error deleting the recipe"
+            flash.now[:danger] = "There was an error deleting the recipe"
             render 'index'
         end
     end

@@ -1,6 +1,6 @@
-<%= render "shared/page_title", title: "Showing all chefs" %>
-
 <div class="container">
+    <%= render "shared/page_title", title: "Showing all chefs" %>
+
     <%= render "shared/pagination", obj: @chefs %>
     <% @chefs.each do |chef| %>
         <div class="row mb-4">

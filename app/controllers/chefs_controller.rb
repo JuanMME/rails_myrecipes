@@ -16,6 +16,7 @@ class ChefsController < ApplicationController
     def create
         @chef = Chef.new(chef_params)
         if @chef.save
+            session[:chef_id] = @chef.id
             flash[:success] = "Welcome #{@chef.chefname} to MyRecipes app!"
             redirect_to chef_path(@chef)
         else
@@ -41,7 +42,7 @@ class ChefsController < ApplicationController
             flash[:success] = "Chef deleted successfully"
             redirect_to chefs_path
         else
-            flash[:danger] = "There was an error deleting the chef"
+            flash.now[:danger] = "There was an error deleting the chef"
             render 'index'
         end
     end
