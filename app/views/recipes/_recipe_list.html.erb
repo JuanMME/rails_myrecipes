@@ -13,7 +13,7 @@
                     <p>Ingredients: <%= render recipe.ingredients %></p>
                 <% end %>
                 <small class="d-block">Created <%= time_ago_in_words(recipe.created_at) %> ago
-                    by <%= recipe.chef.chefname %>
+                    by <%= recipe.chef.chefname %> | <%= pluralize(recipe.comments.count, "comment") %>
                 </small>
                 <% if logged_in? && (current_chef == recipe.chef || current_chef.admin?) %>
                     <small class="d-block text-right">
