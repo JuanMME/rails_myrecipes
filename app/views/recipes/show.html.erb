@@ -8,9 +8,9 @@
                 <hr>
                 <p><%= simple_format(@recipe.description) %></p>
                 <hr>
-                <span class="d-block text-center">Created by: </span>
-                <div class="text-center">
-                    <%= link_to gravatar_for(@recipe.chef), recipes_path %>
+                <p class="d-block text-center">Created by: </p>
+                <div class="text-center mb-2">
+                    <%= link_to gravatar_for(@recipe.chef), chef_path(@recipe.chef) %>
                 </div>
                 <small class="d-block text-center"><%= @recipe.chef.chefname.capitalize %></small>
                 <% if logged_in? && (current_chef == @recipe.chef || current_chef.admin?) %>

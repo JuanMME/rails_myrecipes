@@ -1,0 +1,19 @@
+<div class="container">
+    <%= render "shared/page_title", title: "Showing all ingredients" %>
+
+    <%= render "shared/pagination", obj: @ingredients %>
+    <% @ingredients.each do |ing| %>
+        <div class="row mb-4">
+            <div class="col-md-4 offset-md-4 card">
+                <div class="card-body text-center">
+                    <p class="mb-0" style="font-weight: bold; font-size: 1.25em"><%= link_to ing.name, ingredient_path(ing) %></p>
+                    <p class="mb-0"><small><%= pluralize(ing.recipes.count, "recipe") if ing.recipes %></small></p>
+                    <% if logged_in? && current_chef.admin? %>
+                        <%= link_to "Edit", edit_ingredient_path(ing) %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+    <%= render "shared/pagination", obj: @ingredients %>
+</div>
